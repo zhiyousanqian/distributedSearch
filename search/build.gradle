@@ -1,0 +1,21 @@
+version = '1.0'
+
+apply from: "${rootProject.projectDir}/gradle/slf4j.gradle"
+//apply from: "${rootProject.projectDir}/gradle/provided.gradle"
+
+def solrExclude = {
+    exclude group: 'org.apache.hadoop'
+    exclude group: 'org.eclipse.jetty'
+//    exclude group: 'org.restlet.jee'
+    exclude module: 'javax.servlet'
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+    compile 'org.jsoup:jsoup:1.7.3'
+    compile 'org.codehaus.jackson:jackson-core-asl:1.9.13'
+    compile 'org.codehaus.jackson:jackson-mapper-asl:1.9.13'
+    compile  "org.apache.solr:solr-core:5.2.1",solrExclude
+    compile 'dom4j:dom4j:1.6.1'
+    compile 'com.belerweb:pinyin4j:2.5.0'
+}
